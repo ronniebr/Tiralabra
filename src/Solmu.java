@@ -11,6 +11,7 @@ public class Solmu {
     
     private int kaaripaino;
     private int solmunNumero;
+  
     
     public Solmu(int solmunNumero, int kaaripaino){
         this.kaaripaino = kaaripaino;

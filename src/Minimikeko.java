@@ -10,11 +10,14 @@
 public class Minimikeko {
 
     private int[] A = new int[10];
+    private int[] Solmut = new int[10];
+    
     private int heapSize = 0;
 
     public Minimikeko() {
         for (int j = 0; j < A.length; j++) {
-            A[j] = 99;
+            A[j] = 999;
+            Solmut[j] = 999;
         }
     }
 
@@ -27,9 +30,39 @@ public class Minimikeko {
             i = i / 2;
         }
         A[i] = k;
+        
+        
 
 
 
+
+    }
+    
+    
+
+    public void heapInsert(int solmu, int k) {
+        heapSize += 1;
+        int i = heapSize;
+
+        while (i > 1 && parent(i) > k) {
+            A[i] = parent(i);
+            i = i / 2;
+        }
+        A[i] = k;
+        Solmut[solmu] = k;
+        
+        /*
+        for( i=0;i<Solmut.length;i++){
+        System.out.print(Solmut[i]+",");
+        
+        }
+        System.out.println();
+        
+        * 
+        */
+        
+        
+        
 
     }
 
@@ -40,29 +73,103 @@ public class Minimikeko {
 
     public int heapDelMin() {
         int min = A[1];
+        int solmuindeksi =-1;
         A[1] = A[heapSize];
         heapSize -= 1;
-        System.out.println(A[1]);
+        //System.out.println(A[1]);
         heapify(1);
-        return min;
-
-
-    }
-
-    public void heapDecKey(int i, int uusiAvain) {
-        int apu;
-        if (uusiAvain < A[i]) {
-            A[i] = uusiAvain;
-            while(i>1 && parent(i) > A[i]){
-                
-                apu = A[i];
-                A[i] = parent(i);
-                A[i/2] = apu;
-                i = i/2;
+       // return min;
+        for(int i = 0; i<Solmut.length;i++){
+            if(Solmut[i] == min){
+                solmuindeksi = i;
+                Solmut[i] = 99;
             }
             
         }
+        
+        return solmuindeksi;
+        
+
+
     }
+/*
+    public void heapDecKey(int i, int uusiAvain) {//ei vielä toimi solmuille
+        int apu;
+        if (uusiAvain < A[i]) {
+            A[i] = uusiAvain;
+            while (i > 1 && parent(i) > A[i]) {
+
+                apu = A[i];
+                A[i] = parent(i);
+                A[i / 2] = apu;
+                i = i / 2;
+            }
+
+        }
+    }
+    * 
+    */
+    public void heapDecKey(int solmu, int uusiAvain) {
+        int apu;
+        int i=-1;
+        int k;
+        int apu2 = Solmut[solmu];
+        
+        System.out.println("Solmut ennen: ");
+        for( k=0;k<Solmut.length;k++){
+        System.out.print(Solmut[k]+",");
+        
+        }
+        System.out.println();
+        
+        //Solmut[solmu] = uusiAvain;
+        //System.out.println("apu2: " + apu2);
+        for(int j=1;j<=heapSize;j++){
+           // System.out.println(A[j]);
+            if(A[j]== apu2){
+                i = j;
+                
+            }
+        }
+        
+        if (uusiAvain < A[i]) {
+            A[i] = uusiAvain;
+            Solmut[solmu] = uusiAvain;
+            
+            while (i > 1 && parent(i) > A[i]) {
+
+                apu = A[i];
+                A[i] = parent(i);
+                A[i / 2] = apu;
+                i = i / 2;
+            }
+
+        }
+        System.out.println("Solmut jälkeen: ");
+        for( k=0;k<Solmut.length;k++){
+        System.out.print(Solmut[k]+",");
+        
+        }
+        System.out.println();
+        
+    }
+    
+  
+    
+    public int getHeapSize(){
+        return heapSize;
+    }
+    
+    public boolean solmuOnKeossa(int solmu){
+    
+    if(Solmut[solmu]==99){
+        return false;
+    }
+    else
+        return true;
+
+    
+}
 
     private void heapify(int i) {
         int pienin;
