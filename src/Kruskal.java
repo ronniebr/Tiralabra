@@ -26,15 +26,15 @@ public class Kruskal {
     public LinkedList[] virita(Verkko verkko) {
         this.verkko = verkko;
         Minimikeko minimikeko = new Minimikeko();
-        pala = new int[verkko.getSolmutaulukko().length];
-        for (int i = 0; i < verkko.getSolmutaulukko().length; i++) {
+        pala = new int[verkko.getVieruslista().length];
+        for (int i = 0; i < verkko.getVieruslista().length; i++) {
             pala[i] = i;
 
 
 
 
-            for (int j = 0; j < verkko.getSolmutaulukko()[j].size(); j++) {
-                Solmu solmu = (Solmu) verkko.getSolmutaulukko()[i].get(j);
+            for (int j = 0; j < verkko.getVieruslista()[j].size(); j++) {
+                Solmu solmu = (Solmu) verkko.getVieruslista()[i].get(j);
                 minimikeko.heapInsert(solmu.getSolmunNumero(), solmu.getKaaripaino());
 
             }

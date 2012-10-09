@@ -16,28 +16,29 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         Verkko testiverkko = new Verkko();
+        
         Prim prim = new Prim();
         LinkedList[] ViritettyPuu;
+        
+         for (int k = 0; k < testiverkko.getVieruslista().length; k++) {
 
-        for (int k = 0; k < testiverkko.getSolmutaulukko().length; k++) {
+         System.out.print(testiverkko.getVieruslista()[k]);
+         }
 
-            System.out.print(testiverkko.getSolmutaulukko()[k]);
-        }
+
         long aloitusAika = System.currentTimeMillis();
         ViritettyPuu = prim.virita(testiverkko, 0);
         long lopetusAika = System.currentTimeMillis();
 
-        System.out.println(ViritettyPuu.toString());
-        
 
         for (int k = 0; k < ViritettyPuu.length; k++) {
 
             System.out.print(ViritettyPuu[k]);
         }
         System.out.println();
-        System.out.println("Suoritusaika primille on "+ (lopetusAika-aloitusAika)+"ms.");
+        System.out.println("Suoritusaika primille on " + (lopetusAika - aloitusAika) + "ms.");
         /*
          *
          * int i = 3; int j = 2; System.out.println("testi:"+ i/j);

@@ -26,6 +26,7 @@ public class Verkko {
     private Solmu solmu6 = new Solmu(1,7);
     private Solmu solmu7 = new Solmu(3,9);
     private Solmu solmu8 = new Solmu(5,1);
+    private Solmu uusiSolmu;
     public Verkko(){
         
         vieruslista.add(new Solmu(1,7));
@@ -74,7 +75,26 @@ public class Verkko {
         //System.out.println("indeksitesti: "+ solmutaulukko.get(0));
         
     }
-    public LinkedList[] getSolmutaulukko(){
+    public Verkko(int solmujenlkm){
+        int solmunumero=-1;
+        int kaaripaino=1;
+        solmutaulu = new LinkedList[solmujenlkm];
+        for(int i=0;i<solmujenlkm; i++){
+            solmutaulu[i] = new LinkedList();
+            
+         }
+        for(int j=0;j<solmutaulu.length;j++){
+            solmunumero = -1;
+            for (int k=0; k<solmutaulu.length; k++){
+                solmunumero +=1;
+                
+                uusiSolmu = new Solmu(solmunumero,kaaripaino);
+                solmutaulu[j].add(uusiSolmu);
+            }
+        }
+        
+    }
+    public LinkedList[] getVieruslista(){
         return solmutaulu;
     }
   
