@@ -25,6 +25,7 @@ public class Solmu {
     public int getSolmunNumero(){
         return solmunNumero;
     }
+    
     @Override
     public String toString(){
         return ("(" +solmunNumero+ ", "+ kaaripaino+ ")");

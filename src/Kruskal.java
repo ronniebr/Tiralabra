@@ -7,23 +7,19 @@
  *
  * @author Ronnie
  */
-import java.util.*;
+
 
 public class Kruskal {
 
     private Verkko verkko;
-    private LinkedList[] solmutaulu = new LinkedList[5];
-    private LinkedList<Solmu> vieruslista = new LinkedList();
-    private LinkedList<Solmu> vieruslista2 = new LinkedList();
-    private LinkedList<Solmu> vieruslista3 = new LinkedList();
-    private LinkedList<Solmu> vieruslista4 = new LinkedList();
-    private LinkedList<Solmu> vieruslista5 = new LinkedList();
+    private Solmu[][] solmutaulu;
+
     int[] pala;
 
     public Kruskal() {
     }
 
-    public LinkedList[] virita(Verkko verkko) {
+    public Solmu[][] virita(Verkko verkko) {
         this.verkko = verkko;
         Minimikeko minimikeko = new Minimikeko();
         pala = new int[verkko.getVieruslista().length];
@@ -33,8 +29,8 @@ public class Kruskal {
 
 
 
-            for (int j = 0; j < verkko.getVieruslista()[j].size(); j++) {
-                Solmu solmu = (Solmu) verkko.getVieruslista()[i].get(j);
+            for (int j = 0; j < verkko.getVieruslista()[j].length; j++) {
+                Solmu solmu = (Solmu) verkko.getVieruslista()[i][j];
                 minimikeko.heapInsert(solmu.getSolmunNumero(), solmu.getKaaripaino());
 
             }
