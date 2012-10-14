@@ -11,7 +11,12 @@ package TiratJaAlgot;
  */
 public class Kaari {
     private int u,v,kaaripaino;
-    
+    /**
+     * Konstruktori luo uuden kaaren (u,v)
+     * @param u
+     * @param v
+     * @param kaaripaino 
+     */
     public Kaari(int u, int v, int kaaripaino){
         this.u =u;
         this.v = v;

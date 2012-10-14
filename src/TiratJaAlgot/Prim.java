@@ -1,8 +1,5 @@
 package TiratJaAlgot;
 
-
-
-
 /*
  * To change this template, choose Tools | Templates and open the template in
  * the editor.
@@ -15,11 +12,19 @@ public class Prim {
 
     private int[] etaisyys;
     private int[] parent;
-  
     private Verkko pieninVirittavaPuu;
+
     public Prim() {
     }
-
+/**
+ * Virittää syötetyn verkon pienimmän virittävän puun ja palauttaa sen.
+ * Läpikäynti alkaa aloitussolmusta.
+ * @param verkko
+ * @param aloitussolmu
+ * @return 
+ */
+ 
+ 
     public Verkko virita(Verkko verkko, int aloitussolmu) {
 
 
@@ -47,19 +52,18 @@ public class Prim {
             minimikeko.heapInsert(i, etaisyys[i]);
 
         }
-        System.out.println("minimikeko: ");
-        System.out.print(minimikeko);
+
 
         while (minimikeko.getHeapSize() != 0) {
             int kasiteltavaSolmu = minimikeko.heapDelMin();
             int kaaripaino = 0;
 
-            System.out.println("Käsiteltävä solmu:" + kasiteltavaSolmu);
+
 
             if (parent[kasiteltavaSolmu] != -1) {
-                
-                int k=0;
-                while(verkko.getVieruslista()[kasiteltavaSolmu][k] != null){
+
+                int k = 0;
+                while (verkko.getVieruslista()[kasiteltavaSolmu][k] != null) {
                     Solmu vierussolmu = (Solmu) verkko.getVieruslista()[kasiteltavaSolmu][k];
                     if (vierussolmu.getSolmunNumero() == parent[kasiteltavaSolmu]) {
                         kaaripaino = vierussolmu.getKaaripaino();
@@ -68,11 +72,11 @@ public class Prim {
                     k++;
                 }
                 pieninVirittavaPuu.lisaaKaari(kasiteltavaSolmu, parent[kasiteltavaSolmu], kaaripaino);
-               
+
             }
-            
+
             int i = 0;
-            while(verkko.getVieruslista()[kasiteltavaSolmu][i] != null){
+            while (verkko.getVieruslista()[kasiteltavaSolmu][i] != null) {
                 Solmu solmu = (Solmu) verkko.getVieruslista()[kasiteltavaSolmu][i];
                 if (minimikeko.solmuOnKeossa(solmu.getSolmunNumero())
                         && solmu.getKaaripaino() < etaisyys[solmu.getSolmunNumero()]) {
@@ -80,13 +84,11 @@ public class Prim {
                     parent[solmu.getSolmunNumero()] = kasiteltavaSolmu;
                     etaisyys[solmu.getSolmunNumero()] = solmu.getKaaripaino();
 
-                    System.out.println("Solmu:" + solmu.getSolmunNumero() + " kaaripaino:" + solmu.getKaaripaino());
+
 
                     minimikeko.heapDecKey(solmu.getSolmunNumero(), etaisyys[solmu.getSolmunNumero()]);
 
-                    System.out.println("minimikeko: ");
-                    System.out.print(minimikeko);
-                    System.out.println("pienin kaari:" + minimikeko.heapMin());
+
                 }
                 i++;
             }

@@ -14,7 +14,11 @@ public class Solmu {
     private int kaaripaino;
     private int solmunNumero;
   
-    
+    /**
+     * Luo uuden vieruslistan solmun, joka tuntee oman numeronsa ja kaaripainon vanhempaansa.
+     * @param solmunNumero
+     * @param kaaripaino 
+     */
     public Solmu(int solmunNumero, int kaaripaino){
         this.kaaripaino = kaaripaino;
         this.solmunNumero = solmunNumero;

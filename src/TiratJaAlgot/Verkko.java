@@ -15,6 +15,9 @@ public class Verkko {
 
    private Solmu[][] taulu;
 
+  /**
+   * Luo oletusverkon (Tietorakenteet kurssin luentomateriaalin mukainen).
+   */
     public Verkko(){
         
         taulu = new Solmu[5][5];
@@ -30,10 +33,22 @@ public class Verkko {
        
         
     }
+    /**
+     * Luo uuden verkon ja asettaa matriisin oikean kokoiseksi annetun solmujen lukumäärän perusteella.
+     * Oletetaan, että kahden solmun välissä voi olla vain yksi kaari.
+     * @param solmujenlkm 
+     */
     public Verkko(int solmujenlkm){
         taulu = new Solmu[solmujenlkm][solmujenlkm];
 
     }
+    /**
+     * Lisää verkkoon kaaren (lahtoSolmu,loppuSolmu) annetulla kaaripainolla.
+     * Huom! Lisää yhteyden molempiin suuntiin, eli mahdollista luoda vain yhtenäinen painotettu verkko.
+     * @param lahtoSolmu
+     * @param loppuSolmu
+     * @param kaaripaino 
+     */
     public final void lisaaKaari(int lahtoSolmu, int loppuSolmu, int kaaripaino){
         int i =0;
         int j =0;
