@@ -1,4 +1,9 @@
-package TiratJaAlgot;
+package Algoritmit;
+
+import Tietorakenteet.Kaari;
+import Tietorakenteet.Minimikeko;
+import Tietorakenteet.Solmu;
+import Tietorakenteet.Verkko;
 
 /*
  * To change this template, choose Tools | Templates and open the template in
@@ -34,6 +39,8 @@ public class Kruskal {
             int j = 0;
             while (verkko.getVieruslista()[i][j] != null) {
                 Solmu solmu = (Solmu) verkko.getVieruslista()[i][j];
+                System.out.println("lisataan kaari ("+i+","+solmu.getSolmunNumero()+") ja paino:"+solmu.getKaaripaino());
+                minimikeko.toString();
                 minimikeko.heapInsert(i, solmu.getSolmunNumero(), solmu.getKaaripaino());
                 j++;
             }
@@ -42,6 +49,8 @@ public class Kruskal {
 
             Kaari kaari;
             kaari = minimikeko.heapDelMinK();
+            System.out.println("pienin kaari ("+kaari.getU()+","+kaari.getV()+") ja paino:"+kaari.getKaaripaino());
+            minimikeko.toString();
             if (pala[kaari.getV()] != pala[kaari.getU()]) {
                 pieninVirittavaPuu.lisaaKaari(kaari.getU(), kaari.getV(), kaari.getKaaripaino());
                 pala[kaari.getU()] = -1;

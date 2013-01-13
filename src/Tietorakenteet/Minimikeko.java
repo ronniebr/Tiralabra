@@ -1,4 +1,4 @@
-package TiratJaAlgot;
+package Tietorakenteet;
 
 /*
  * To change this template, choose Tools | Templates and open the template in
@@ -155,7 +155,7 @@ public class Minimikeko {
         for (int u = 0; u < Kaaret.length; u++) {
             for (int v = 0; v < Kaaret[u].length; v++) {
                 if (Kaaret[u][v] == min) {
-                    
+
                     lahtosolmu = u;
                     loppusolmu = v;
                     Kaaret[u][v] = 998;
@@ -235,7 +235,18 @@ public class Minimikeko {
         int apu;
         int l = 2 * i;
         int r = 2 * i + 1;
-        if (r <= heapSize) {
+
+        if (heapSize == 2) {
+
+            if (Keko[1] > Keko[2]) {
+                apu = Keko[1];
+                Keko[1] = Keko[2];
+                Keko[2] = apu;
+
+            }
+
+
+        } else if (r <= heapSize) {
             if (Keko[l] < Keko[r]) {
                 pienin = l;
             } else {
@@ -290,7 +301,7 @@ public class Minimikeko {
 
     @Override
     public String toString() {
-        for (int j = 0; j < Keko.length; j++) {
+        for (int j = 0; j <= heapSize; j++) {
             System.out.print(Keko[j]);
             System.out.print(",");
         }

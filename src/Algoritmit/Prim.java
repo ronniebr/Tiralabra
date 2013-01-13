@@ -1,4 +1,8 @@
-package TiratJaAlgot;
+package Algoritmit;
+
+import Tietorakenteet.Minimikeko;
+import Tietorakenteet.Solmu;
+import Tietorakenteet.Verkko;
 
 /*
  * To change this template, choose Tools | Templates and open the template in
@@ -57,10 +61,12 @@ public class Prim {
         while (minimikeko.getHeapSize() != 0) {
             int kasiteltavaSolmu = minimikeko.heapDelMin();
             int kaaripaino = 0;
-
-
+            
+            pieninVirittavaPuu.toString();
+            
 
             if (parent[kasiteltavaSolmu] != -1) {
+                
 
                 int k = 0;
                 while (verkko.getVieruslista()[kasiteltavaSolmu][k] != null) {

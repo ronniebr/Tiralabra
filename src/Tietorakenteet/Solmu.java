@@ -1,4 +1,4 @@
-package TiratJaAlgot;
+package Tietorakenteet;
 
 /*
  * To change this template, choose Tools | Templates
