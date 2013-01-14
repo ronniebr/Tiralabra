@@ -43,6 +43,35 @@ public class Verkko {
 
     }
     /**
+     * Luo uuden verkon ja asettaa matriisin oikean kokoiseksi annetun solmujen lukumäärän perusteella. Luo myös satunnaiset yhteydet solmujen välille.
+     * @param solmujenlkm
+     * @param random 
+     */
+    public Verkko(int solmujenlkm,String random){
+        if(solmujenlkm>50){
+            System.out.println("Liian paljon solmuja.");
+            return;
+        }
+        int x,i,y;
+        y=1;
+        i=0;
+        taulu = new Solmu[solmujenlkm][solmujenlkm];
+        
+        while(i < solmujenlkm/2){
+            
+        x=0 + (int)(Math.random() * ((100 - 0) + 1));
+        while(solmujenlkm-y > i){
+            lisaaKaari(i,solmujenlkm-y,x);
+            y++;
+            
+        }
+        
+        i++;
+        
+        }
+        
+    }
+    /**
      * Lisää verkkoon kaaren (lahtoSolmu,loppuSolmu) annetulla kaaripainolla.
      * Huom! Lisää yhteyden molempiin suuntiin, eli mahdollista luoda vain yhtenäinen painotettu verkko.
      * @param lahtoSolmu

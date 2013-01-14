@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  * @author Ronnie
  */
 public class PrimTest {
-    
+
     public PrimTest() {
     }
 
@@ -24,34 +24,28 @@ public class PrimTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
+
     @Test
     public void testiOletusverkolla() {
         Verkko testiverkko = new Verkko();
         Prim prim = new Prim();
         Verkko testiPrim;
         Verkko haluttuPrim = new Verkko(5);
-        
+
         haluttuPrim.lisaaKaari(0, 3, 4);
         haluttuPrim.lisaaKaari(1, 3, 1);
         haluttuPrim.lisaaKaari(1, 4, 1);
         haluttuPrim.lisaaKaari(2, 3, 2);
-        
 
-
-
-        testiPrim = prim.virita(testiverkko,0);
-        
-        testiverkko.toString();
-        testiPrim.toString();
-        haluttuPrim.toString();
+        testiPrim = prim.virita(testiverkko, 0);
 
         for (int i = 0; i < haluttuPrim.getVieruslista().length; i++) {
             for (int j = 0; j < haluttuPrim.getVieruslista()[i].length; j++) {
@@ -80,7 +74,7 @@ public class PrimTest {
         testiverkko.lisaaKaari(1, 1, 0);
         testiverkko.lisaaKaari(2, 2, 0);
 
-        testiPrim = kruskal.virita(testiverkko,0);
+        testiPrim = kruskal.virita(testiverkko, 0);
 
         for (int i = 0; i < haluttuPrim.getVieruslista().length; i++) {
             for (int j = 0; j < haluttuPrim.getVieruslista()[i].length; j++) {
@@ -110,17 +104,10 @@ public class PrimTest {
         testiverkko.lisaaKaari(0, 1, 1);
         testiverkko.lisaaKaari(1, 2, 2);
         testiverkko.lisaaKaari(2, 0, 1);
-        //testiverkko.lisaaKaari(3, 1, 4);
 
-        testiPrim = kruskal.virita(testiverkko,0);
+        testiPrim = kruskal.virita(testiverkko, 0);
         haluttuPrim.lisaaKaari(0, 1, 1);
         haluttuPrim.lisaaKaari(0, 2, 1);
-        //haluttuPrim.lisaaKaari(2, 3, 3);
-        
-        
-        testiPrim.toString();
-        haluttuPrim.toString();
-        
 
         for (int i = 0; i < haluttuPrim.getVieruslista().length; i++) {
             for (int j = 0; j < haluttuPrim.getVieruslista()[i].length; j++) {

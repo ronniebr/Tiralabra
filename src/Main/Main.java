@@ -23,15 +23,13 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        Verkko testiverkko = new Verkko();
+        Verkko testiverkko = new Verkko(50,"random");
         
         Prim prim = new Prim();
         Verkko ViritettyPuuPrim;
         Kruskal kruskal = new Kruskal();
         Verkko ViritettyPuuKruskal;
         
- 
-         
         System.out.println(testiverkko);
 
         long aloitusAika = System.currentTimeMillis();

@@ -46,10 +46,10 @@ public class Minimikeko {
     /**
      * Lisää kekoon Solmun ja siihen liittyvän avaimen. Primin käyttämä metodi.
      *
-     * @param solmu
+     * @param solmunumero
      * @param k
      */
-    public void heapInsert(int solmu, int k) {
+    public void heapInsert(int solmunumero, int k) {
         heapSize += 1;
         int i = heapSize;
 
@@ -58,7 +58,7 @@ public class Minimikeko {
             i = i / 2;
         }
         Keko[i] = k;
-        Solmut[solmu] = k;
+        Solmut[solmunumero] = k;
 
 
 
