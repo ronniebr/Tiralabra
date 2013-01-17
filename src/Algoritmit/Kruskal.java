@@ -30,8 +30,8 @@ public class Kruskal {
     public Verkko virita(Verkko verkko) {
 
         pieninVirittavaPuu = new Verkko(verkko.getVieruslista().length);
-        Minimikeko minimikeko = new Minimikeko(verkko.getVieruslista().length * verkko.getVieruslista().length);
-        pala = new int[verkko.getVieruslista().length*verkko.getVieruslista().length];
+        Minimikeko minimikeko = new Minimikeko(verkko.getVieruslista().length);
+        pala = new int[verkko.getVieruslista().length];
 
         for (int i = 0; i < verkko.getVieruslista().length; i++) {
 
@@ -40,14 +40,14 @@ public class Kruskal {
             while (verkko.getVieruslista()[i][j] != null) {
                 Solmu solmu = (Solmu) verkko.getVieruslista()[i][j];
 
-                minimikeko.heapInsert(i, solmu.getSolmunNumero(), solmu.getKaaripaino());
+                minimikeko.heapInsert2(i, solmu.getSolmunNumero(), solmu.getKaaripaino());
                 j++;
             }
         }
         while (minimikeko.getHeapSize() != 0) {
 
             Kaari kaari;
-            kaari = minimikeko.heapDelMinK();
+            kaari = minimikeko.heapDelMinK2();
 
 
             if (pala[kaari.getV()] != pala[kaari.getU()]) {

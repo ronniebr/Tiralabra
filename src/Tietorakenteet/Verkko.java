@@ -48,10 +48,12 @@ public class Verkko {
      * @param random 
      */
     public Verkko(int solmujenlkm,String random){
-        if(solmujenlkm>50){
+       /* if(solmujenlkm>50){
             System.out.println("Liian paljon solmuja.");
             return;
         }
+        * 
+        */
         int x,i,y;
         y=1;
         i=0;

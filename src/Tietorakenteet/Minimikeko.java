@@ -11,6 +11,7 @@ package Tietorakenteet;
 public class Minimikeko {
 
     private int[] Keko;
+    private Kaari[] Keko2;
     private int[] Solmut;
     private int[][] Kaaret;
     private int heapSize = 0;
@@ -29,6 +30,7 @@ public class Minimikeko {
 
         Solmut = new int[alkioidenlkm];
         Keko = new int[alkioidenlkm + 1];
+        Keko2 = new Kaari[alkioidenlkm*alkioidenlkm+1];
         Kaaret = new int[alkioidenlkm][alkioidenlkm];
 
         for (int j = 0; j < Keko.length; j++) {
@@ -87,11 +89,17 @@ public class Minimikeko {
         }
         Keko[i] = k;
         Kaaret[u][v] = k;
+    }
 
+    public void heapInsert2(int u, int v, int k) {
 
-
-
-
+        heapSize += 1;
+        int i = heapSize;
+        while (i > 1 && parent2(i).getKaaripaino() > k) {
+            Keko2[i] = parent2(i);
+            i = i / 2;
+        }
+        Keko2[i] = new Kaari(u, v, k);
 
 
     }
@@ -166,6 +174,16 @@ public class Minimikeko {
             }
         }
         return pieninKaari = new Kaari(lahtosolmu, loppusolmu, min);
+    }
+
+    public Kaari heapDelMinK2() {
+        Kaari pieninKaari = Keko2[1];
+        Keko2[1] = Keko2[heapSize];
+        heapSize -= 1;
+
+        heapify2(1);
+
+        return pieninKaari;
     }
 
     /**
@@ -268,6 +286,44 @@ public class Minimikeko {
 
     }
 
+    private void heapify2(int i) {
+        int pienin;
+        Kaari apu;
+        int l = 2 * i;
+        int r = 2 * i + 1;
+
+        if (heapSize == 2) {
+
+            if (Keko2[1].getKaaripaino() > Keko2[2].getKaaripaino()) {
+                apu = Keko2[1];
+                Keko2[1] = Keko2[2];
+                Keko2[2] = apu;
+
+            }
+
+
+        } else if (r <= heapSize) {
+            if (Keko2[l].getKaaripaino() < Keko2[r].getKaaripaino()) {
+                pienin = l;
+            } else {
+                pienin = r;
+            }
+            if (Keko2[i].getKaaripaino() > Keko2[pienin].getKaaripaino()) {
+
+                apu = Keko2[i];
+                Keko2[i] = Keko2[pienin];
+                Keko2[pienin] = apu;
+                heapify2(pienin);
+            }
+        } else if (l == heapSize && Keko2[i].getKaaripaino() < Keko2[l].getKaaripaino()) {
+            apu = Keko2[i];
+            Keko2[i] = Keko2[l];
+            Keko2[l] = apu;
+
+        }
+
+    }
+
     /**
      * Palauttaa annetun indeksin vanhemman alkion.
      *
@@ -277,6 +333,10 @@ public class Minimikeko {
     private int parent(int i) {
 
         return Keko[i / 2];
+    }
+
+    private Kaari parent2(int i) {
+        return Keko2[i / 2];
     }
 
     /**
