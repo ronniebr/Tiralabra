@@ -71,6 +71,7 @@ public class Minimikeko {
     /**
      * Lisää kekoon verkon kaaren (u,v) kaaripainolla k. Kruskalin käyttämä
      * metodi.
+     * HUOM! ei käytössä, koska erittäin hidas. Korvattu metodilla heapDelMinK2(), joka ei käytä apurakenteita.
      *
      * @param u
      * @param v
@@ -90,7 +91,14 @@ public class Minimikeko {
         Keko[i] = k;
         Kaaret[u][v] = k;
     }
-
+/**
+ * Lisää kekoon verkon kaaren (u,v) kaaripainolla k. Kruskalin käyttämä
+ * metodi.
+ * Korvaa vanhan heapInsert(u,v,k) metodin, huomattavasti nopeampi ja toimii isommalla syötteellä.
+ * @param u
+ * @param v
+ * @param k 
+ */
     public void heapInsert2(int u, int v, int k) {
 
         heapSize += 1;
@@ -147,8 +155,8 @@ public class Minimikeko {
     /**
      * Poistaa keon pienimmän alkion ja palauttaa siihen liittyvän kaaren (u,v).
      * Kruskalin käyttämä metodi.
-     *
-     * @return
+     * HUOM! ei käytössä, koska erittäin hidas. Korvattu metodilla heapDelMinK2(), joka ei käytä apurakenteita.
+     * @return kaari
      */
     public Kaari heapDelMinK() {
         int min = Keko[1];
@@ -175,7 +183,11 @@ public class Minimikeko {
         }
         return pieninKaari = new Kaari(lahtosolmu, loppusolmu, min);
     }
-
+/**
+ * Poistaa keon pienimmän kaaren ja palauttaa sen.
+ * Vanhan heapDelMinK() metodin korvaaja, huomattavasti nopeampi ja toimii isommalla syötteellä.
+ * @return kaari
+ */
     public Kaari heapDelMinK2() {
         Kaari pieninKaari = Keko2[1];
         Keko2[1] = Keko2[heapSize];
@@ -285,7 +297,11 @@ public class Minimikeko {
         }
 
     }
-
+/**
+ * Korjaa annetun keon indeksin kekoehdon.
+ * Uusi Kruskalin käyttämä metodi, joka ymmärtää Kaariolioita.
+ * @param i 
+ */
     private void heapify2(int i) {
         int pienin;
         Kaari apu;

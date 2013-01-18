@@ -39,15 +39,18 @@ public class KruskalTest {
         Kruskal kruskal = new Kruskal();
         Verkko ViritettyPuuKruskal;
         Verkko ViritettyPuuVastaus = new Verkko(5);
-
-        ViritettyPuuVastaus.lisaaKaari(1, 3, 1);
         ViritettyPuuVastaus.lisaaKaari(1, 4, 1);
+        ViritettyPuuVastaus.lisaaKaari(1, 3, 1);
+
         ViritettyPuuVastaus.lisaaKaari(2, 3, 2);
         ViritettyPuuVastaus.lisaaKaari(0, 3, 4);
 
 
 
         ViritettyPuuKruskal = kruskal.virita(testiverkko);
+        ViritettyPuuKruskal.toString();
+        ViritettyPuuVastaus.toString();
+
 
 
         for (int i = 0; i < ViritettyPuuVastaus.getVieruslista().length; i++) {

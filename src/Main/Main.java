@@ -23,7 +23,7 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        Verkko testiverkko = new Verkko(300,"random");
+        Verkko testiverkko = new Verkko();
         
         Prim prim = new Prim();
         Verkko ViritettyPuuPrim;
